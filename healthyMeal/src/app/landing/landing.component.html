@@ -1,0 +1,198 @@
+<!-- Navigation -->
+<mat-toolbar color="primary" class="landing-navbar">
+  <span class="app-title">
+    <mat-icon class="logo-icon">restaurant</mat-icon>
+    HealthyMeal
+  </span>
+  <span class="spacer"></span>
+  <div class="nav-buttons">
+    <button mat-button routerLink="/login" class="nav-button">
+      <mat-icon>login</mat-icon>
+      Zaloguj się
+    </button>
+    <button mat-raised-button color="accent" routerLink="/signup" class="nav-button signup-btn">
+      <mat-icon>person_add</mat-icon>
+      Zarejestruj się
+    </button>
+  </div>
+</mat-toolbar>
+
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="hero-content">
+    <div class="hero-text">
+      <h1 class="hero-title">
+        Twórz <span class="highlight">Zdrowe Przepisy</span><br>
+        z Pomocą AI
+      </h1>
+      <p class="hero-description">
+        HealthyMeal to inteligentna aplikacja, która pomaga Ci planować zdrowe posiłki, 
+        generować spersonalizowane przepisy i zarządzać składnikami - wszystko w jednym miejscu.
+      </p>
+      <div class="hero-actions">
+        <button mat-raised-button color="primary" size="large" routerLink="/signup" class="cta-button">
+          <mat-icon>rocket_launch</mat-icon>
+          Rozpocznij Za Darmo
+        </button>
+        <button mat-stroked-button color="primary" size="large" class="demo-button">
+          <mat-icon>play_circle</mat-icon>
+          Zobacz Demo
+        </button>
+      </div>
+    </div>
+    <div class="hero-image">
+      <div class="hero-card">
+        <mat-icon class="hero-icon">restaurant_menu</mat-icon>
+        <h3>AI Recipe Generator</h3>
+        <p>Generuj przepisy na podstawie Twoich preferencji</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Features Section -->
+<section class="features-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Dlaczego HealthyMeal?</h2>
+      <p class="section-subtitle">
+        Odkryj funkcje, które sprawią, że gotowanie stanie się przyjemnością
+      </p>
+    </div>
+    
+    <div class="features-grid">
+      <mat-card class="feature-card" *ngFor="let feature of features">
+        <mat-card-content>
+          <div class="feature-icon">
+            <mat-icon>{{ feature.icon }}</mat-icon>
+          </div>
+          <h3 class="feature-title">{{ feature.title }}</h3>
+          <p class="feature-description">{{ feature.description }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</section>
+
+<!-- How It Works Section -->
+<section class="how-it-works-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Jak to działa?</h2>
+      <p class="section-subtitle">
+        Prosty proces w trzech krokach do zdrowego odżywiania
+      </p>
+    </div>
+    
+    <div class="steps-container">
+      <div class="step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3>Ustaw Preferencje</h3>
+          <p>Powiedz nam o swoich preferencjach żywieniowych, alergiach i celach zdrowotnych.</p>
+        </div>
+      </div>
+      
+      <div class="step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h3>Generuj Przepisy</h3>
+          <p>Nasza AI stworzy spersonalizowane przepisy dopasowane do Twoich potrzeb.</p>
+        </div>
+      </div>
+      
+      <div class="step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h3>Gotuj i Ciesz się</h3>
+          <p>Śledź składniki, planuj posiłki i ciesz się zdrowymi, smacznymi daniami.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="testimonials-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Co mówią nasi użytkownicy?</h2>
+    </div>
+    
+    <div class="testimonials-grid">
+      <mat-card class="testimonial-card" *ngFor="let testimonial of testimonials">
+        <mat-card-content>
+          <div class="stars">
+            <mat-icon *ngFor="let star of [1,2,3,4,5]">star</mat-icon>
+          </div>
+          <p class="testimonial-text">"{{ testimonial.text }}"</p>
+          <div class="testimonial-author">
+            <strong>{{ testimonial.name }}</strong>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-content">
+      <h2 class="cta-title">Gotowy na zdrową zmianę?</h2>
+      <p class="cta-description">
+        Dołącz do tysięcy użytkowników, którzy już odkryli radość ze zdrowego gotowania
+      </p>
+      <button mat-raised-button color="accent" size="large" routerLink="/signup" class="cta-button">
+        <mat-icon>restaurant</mat-icon>
+        Zacznij Gotować Zdrowo
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="landing-footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <div class="brand-logo">
+          <mat-icon>restaurant</mat-icon>
+          <span>HealthyMeal</span>
+        </div>
+        <p>Twoja droga do zdrowego odżywiania z pomocą AI</p>
+      </div>
+      
+      <div class="footer-links">
+        <div class="footer-column">
+          <h4>Produkt</h4>
+          <a href="#features">Funkcje</a>
+          <a href="#pricing">Cennik</a>
+          <a href="#demo">Demo</a>
+        </div>
+        
+        <div class="footer-column">
+          <h4>Firma</h4>
+          <a href="#about">O nas</a>
+          <a href="#contact">Kontakt</a>
+          <a href="#careers">Kariera</a>
+        </div>
+        
+        <div class="footer-column">
+          <h4>Pomoc</h4>
+          <a href="#support">Wsparcie</a>
+          <a href="#docs">Dokumentacja</a>
+          <a href="#faq">FAQ</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2025 HealthyMeal. Wszystkie prawa zastrzeżone.</p>
+      <div class="footer-legal">
+        <a href="#privacy">Polityka Prywatności</a>
+        <a href="#terms">Regulamin</a>
+      </div>
+    </div>
+  </div>
+</footer> 

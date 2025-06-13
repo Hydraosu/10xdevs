@@ -1,0 +1,180 @@
+<div class="recipe-form-container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Utwórz Nowy Przepis</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()" class="recipe-form">
+        <!-- Basic Information -->
+        <div class="form-section">
+          <h3>Podstawowe Informacje</h3>
+          <div class="row">
+          <mat-form-field appearance="outline">
+              <mat-label>Tytuł Przepisu</mat-label>
+              <input matInput formControlName="title" placeholder="Wprowadź tytuł przepisu">
+            <mat-error *ngIf="recipeForm.get('title')?.hasError('required')">
+              Tytuł jest wymagany
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Opis</mat-label>
+              <textarea matInput formControlName="description" placeholder="Wprowadź opis przepisu" rows="3"></textarea>
+              <mat-error *ngIf="recipeForm.get('description')?.hasError('required')">
+                Opis jest wymagany
+            </mat-error>
+          </mat-form-field>
+          </div>
+        </div>
+
+        <!-- Cooking Details -->
+        <div class="form-section">
+          <h3>Szczegóły Gotowania</h3>
+          <div class="row">
+            <mat-form-field appearance="outline">
+              <mat-label>Czas Gotowania (minuty)</mat-label>
+              <input matInput type="number" formControlName="cooking_time" min="1">
+              <mat-error *ngIf="recipeForm.get('cooking_time')?.hasError('required')">
+                Czas gotowania jest wymagany
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Poziom Trudności</mat-label>
+              <mat-select formControlName="difficulty">
+                <mat-option value="easy">Łatwy</mat-option>
+                <mat-option value="medium">Średni</mat-option>
+                <mat-option value="hard">Trudny</mat-option>
+              </mat-select>
+              <mat-error *ngIf="recipeForm.get('difficulty')?.hasError('required')">
+                Poziom trudności jest wymagany
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <!-- Nutritional Information -->
+        <div class="form-section">
+          <h3>Informacje Żywieniowe</h3>
+          <div class="row">
+            <mat-form-field appearance="outline">
+              <mat-label>Kalorie</mat-label>
+              <input matInput type="number" formControlName="calories" min="0">
+              <mat-error *ngIf="recipeForm.get('calories')?.hasError('required')">
+                Kalorie są wymagane
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Białko (g)</mat-label>
+              <input matInput type="number" formControlName="protein" min="0">
+              <mat-error *ngIf="recipeForm.get('protein')?.hasError('required')">
+                Zawartość białka jest wymagana
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Węglowodany (g)</mat-label>
+              <input matInput type="number" formControlName="carbs" min="0">
+              <mat-error *ngIf="recipeForm.get('carbs')?.hasError('required')">
+                Zawartość węglowodanów jest wymagana
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Tłuszcze (g)</mat-label>
+              <input matInput type="number" formControlName="fat" min="0">
+              <mat-error *ngIf="recipeForm.get('fat')?.hasError('required')">
+                Zawartość tłuszczów jest wymagana
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <!-- Instructions -->
+        <div class="form-section">
+          <h3>Instrukcje Gotowania</h3>
+          <mat-form-field appearance="outline">
+            <mat-label>Instrukcje Krok po Kroku</mat-label>
+            <textarea matInput formControlName="instructions" placeholder="Wprowadź instrukcje gotowania" rows="6"></textarea>
+            <mat-error *ngIf="recipeForm.get('instructions')?.hasError('required')">
+              Instrukcje są wymagane
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <!-- Ingredients -->
+        <div class="form-section">
+          <h3>Składniki</h3>
+          <p class="step-description">Dodaj wszystkie składniki potrzebne do Twojego przepisu. Możesz określić ilość i jednostkę dla każdego składnika.</p>
+          
+          <div formArrayName="ingredients" class="ingredients-container">
+            <div *ngFor="let ingredient of ingredients.controls; let i = index" [formGroupName]="i" class="ingredient-row">
+              <mat-form-field appearance="outline">
+                <mat-label>Składnik</mat-label>
+                <mat-select formControlName="ingredient_id" placeholder="Wybierz składnik">
+                  <mat-option *ngFor="let ing of availableIngredients" [value]="ing.id">
+                    {{ing.name}}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="ingredients.at(i).get('ingredient_id')?.hasError('required')">
+                  Proszę wybrać składnik
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Ilość</mat-label>
+                <input matInput type="number" formControlName="amount" min="0" step="0.1" placeholder="Wprowadź ilość">
+                <mat-error *ngIf="ingredients.at(i).get('amount')?.hasError('required')">
+                  Ilość jest wymagana
+                </mat-error>
+                <mat-error *ngIf="ingredients.at(i).get('amount')?.hasError('min')">
+                  Ilość musi być większa niż 0
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Jednostka</mat-label>
+                <mat-select formControlName="unit" placeholder="Wybierz jednostkę">
+                  <mat-option value="g">g (gramy)</mat-option>
+                  <mat-option value="kg">kg (kilogramy)</mat-option>
+                  <mat-option value="ml">ml (mililitry)</mat-option>
+                  <mat-option value="l">l (litry)</mat-option>
+                  <mat-option value="tsp">łyżeczka</mat-option>
+                  <mat-option value="tbsp">łyżka</mat-option>
+                  <mat-option value="cup">szklanka</mat-option>
+                  <mat-option value="piece">sztuka</mat-option>
+                </mat-select>
+                <mat-error *ngIf="ingredients.at(i).get('unit')?.hasError('required')">
+                  Proszę wybrać jednostkę
+                </mat-error>
+              </mat-form-field>
+
+              <button mat-icon-button color="warn" type="button" (click)="removeIngredient(i)" 
+                      matTooltip="Usuń składnik" [disabled]="ingredients.length === 1">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          </div>
+
+          <button mat-button color="primary" type="button" class="add-ingredient" (click)="addIngredient()"
+                  matTooltip="Dodaj kolejny składnik">
+            <mat-icon>add</mat-icon>
+            Dodaj Składnik
+          </button>
+        </div>
+
+        <!-- Form Actions -->
+        <div class="form-actions">
+          <button mat-button type="button" routerLink="/app/recipes">Anuluj</button>
+          <button mat-raised-button color="primary" type="submit" [disabled]="recipeForm.invalid || isLoading">
+            <mat-spinner *ngIf="isLoading" diameter="20" class="spinner"></mat-spinner>
+            <mat-icon *ngIf="!isLoading">save</mat-icon>
+            {{ isLoading ? 'Zapisywanie...' : 'Zapisz Przepis' }}
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div> 

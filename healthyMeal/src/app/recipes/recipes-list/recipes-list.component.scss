@@ -1,0 +1,47 @@
+.recipes-container {
+  padding: 20px;
+}
+
+mat-card {
+  margin: 20px;
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+}
+
+table {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.mat-column-title {
+  width: 20%;
+}
+
+.mat-column-description {
+  width: 25%;
+}
+
+.mat-column-cooking_time {
+  width: 15%;
+}
+
+.mat-column-difficulty {
+  width: 10%;
+}
+
+.mat-column-calories {
+  width: 10%;
+}
+
+.mat-column-created_at {
+  width: 20%;
+}
+
+mat-paginator {
+  margin-top: 20px;
+} 

@@ -1,0 +1,207 @@
+/* You can add global styles to this file, and also import other style files */
+
+@use '@angular/material' as mat;
+
+// Define a custom theme
+$primary-palette: (
+  50: #e3f2fd,
+  100: #bbdefb,
+  200: #90caf9,
+  300: #64b5f6,
+  400: #42a5f5,
+  500: #2196f3,
+  600: #1e88e5,
+  700: #1976d2,
+  800: #1565c0,
+  900: #0d47a1,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+  )
+);
+
+$accent-palette: (
+  50: #f3e5f5,
+  100: #e1bee7,
+  200: #ce93d8,
+  300: #ba68c8,
+  400: #ab47bc,
+  500: #9c27b0,
+  600: #8e24aa,
+  700: #7b1fa2,
+  800: #6a1b9a,
+  900: #4a148c,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: white,
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+  )
+);
+
+$warn-palette: (
+  50: #ffebee,
+  100: #ffcdd2,
+  200: #ef9a9a,
+  300: #e57373,
+  400: #ef5350,
+  500: #f44336,
+  600: #e53935,
+  700: #d32f2f,
+  800: #c62828,
+  900: #b71c1c,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+  )
+);
+
+// Create the palettes
+$primary: mat.m2-define-palette($primary-palette);
+$accent: mat.m2-define-palette($accent-palette);
+$warn: mat.m2-define-palette($warn-palette);
+
+// Create the theme
+$theme: mat.m2-define-light-theme((
+  color: (
+    primary: $primary,
+    accent: $accent,
+    warn: $warn,
+  ),
+  typography: mat.m2-define-typography-config(
+    $font-family: '"Inter", "Roboto", "Helvetica Neue", sans-serif',
+    $headline-1: mat.m2-define-typography-level(96px, 96px, 300),
+    $headline-2: mat.m2-define-typography-level(60px, 60px, 300),
+    $headline-3: mat.m2-define-typography-level(48px, 48px, 400),
+    $headline-4: mat.m2-define-typography-level(34px, 40px, 400),
+    $headline-5: mat.m2-define-typography-level(24px, 32px, 400),
+    $headline-6: mat.m2-define-typography-level(20px, 32px, 500),
+    $subtitle-1: mat.m2-define-typography-level(16px, 28px, 400),
+    $subtitle-2: mat.m2-define-typography-level(14px, 22px, 500),
+    $body-1: mat.m2-define-typography-level(16px, 24px, 400),
+    $body-2: mat.m2-define-typography-level(14px, 20px, 400),
+    $caption: mat.m2-define-typography-level(12px, 20px, 400),
+    $button: mat.m2-define-typography-level(14px, 14px, 500),
+  ),
+  density: 0,
+));
+
+// Include theme styles
+html {
+  @include mat.core();
+  @include mat.all-component-themes($theme);
+  @include mat.typography-hierarchy($theme, $back-compat: true);
+}
+
+// Global styles
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', 'Roboto', 'Helvetica Neue', sans-serif;
+  background-color: #fafafa;
+}
+
+// Snackbar styles
+.error-snackbar {
+  background: linear-gradient(135deg, #f44336, #d32f2f) !important;
+  color: white !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 12px rgba(244, 67, 54, 0.3) !important;
+}
+
+.success-snackbar {
+  background: linear-gradient(135deg, #4caf50, #388e3c) !important;
+  color: white !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3) !important;
+}
+
+.mat-mdc-snack-bar-container {
+  border-radius: 8px !important;
+  
+  .mat-mdc-button {
+    color: white !important;
+    font-weight: 600 !important;
+  }
+}
+
+// Custom styles for Material components
+.mat-mdc-card {
+  border-radius: 16px !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05), 0 4px 8px rgba(0, 0, 0, 0.05) !important;
+}
+
+.mat-mdc-form-field {
+  width: 100%;
+}
+
+.mat-mdc-button, .mat-mdc-raised-button {
+  border-radius: 8px !important;
+  text-transform: none !important;
+  font-weight: 500 !important;
+}
+
+.mat-mdc-card-header {
+  padding: 24px 24px 0 !important;
+}
+
+.mat-mdc-card-content {
+  padding: 24px !important;
+}
+
+// Prevent sidebar scrolling globally
+mat-sidenav {
+  overflow: hidden !important;
+  
+  .mat-drawer-inner-container {
+    overflow: hidden !important;
+  }
+  
+  mat-nav-list {
+    overflow: hidden !important;
+    height: auto !important;
+  }
+}
+
+// Custom scrollbar
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

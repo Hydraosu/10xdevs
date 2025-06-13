@@ -1,0 +1,569 @@
+// Landing Page Styles
+.landing-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  .app-title {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    
+    .logo-icon {
+      margin-right: 8px;
+      font-size: 2rem;
+    }
+  }
+
+  .spacer {
+    flex: 1 1 auto;
+  }
+
+  .nav-buttons {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+
+    .nav-button {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      
+      mat-icon {
+        font-size: 1.2rem;
+      }
+    }
+
+    .signup-btn {
+      font-weight: 600;
+    }
+  }
+}
+
+// Hero Section
+.hero-section {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  overflow: hidden;
+
+  .hero-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .hero-text {
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 24px;
+
+      .highlight {
+        color: #ffd54f;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      }
+    }
+
+    .hero-description {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      margin-bottom: 40px;
+      opacity: 0.9;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+
+      .cta-button, .demo-button {
+        padding: 12px 32px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        mat-icon {
+          font-size: 1.3rem;
+        }
+      }
+
+      .cta-button {
+        background: #ffd54f;
+        color: #333;
+        
+        &:hover {
+          background: #ffcc02;
+          transform: translateY(-2px);
+          box-shadow: 0 8px 25px rgba(255, 213, 79, 0.4);
+        }
+      }
+    }
+  }
+
+  .hero-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .hero-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transform: rotate(5deg);
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: rotate(0deg) scale(1.05);
+      }
+
+      .hero-icon {
+        font-size: 4rem;
+        color: #ffd54f;
+        margin-bottom: 16px;
+      }
+
+      h3 {
+        font-size: 1.5rem;
+        margin-bottom: 12px;
+        font-weight: 600;
+      }
+
+      p {
+        opacity: 0.9;
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+// Container
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+// Section Headers
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+
+  .section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: #333;
+  }
+
+  .section-subtitle {
+    font-size: 1.2rem;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+}
+
+// Features Section
+.features-section {
+  padding: 100px 0;
+  background: #f8f9fa;
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+
+    .feature-card {
+      text-align: center;
+      padding: 40px 24px;
+      border-radius: 16px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: none;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+
+      &:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      .feature-icon {
+        margin-bottom: 24px;
+
+        mat-icon {
+          font-size: 3rem;
+          width: 3rem;
+          height: 3rem;
+          color: #667eea;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: 0 auto;
+        }
+      }
+
+      .feature-title {
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin-bottom: 16px;
+        color: #333;
+      }
+
+      .feature-description {
+        color: #666;
+        line-height: 1.6;
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+// How It Works Section
+.how-it-works-section {
+  padding: 100px 0;
+  background: white;
+
+  .steps-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin-top: 60px;
+
+    .step {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+
+      .step-number {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        font-weight: 700;
+        flex-shrink: 0;
+      }
+
+      .step-content {
+        h3 {
+          font-size: 1.3rem;
+          font-weight: 600;
+          margin-bottom: 12px;
+          color: #333;
+        }
+
+        p {
+          color: #666;
+          line-height: 1.6;
+        }
+      }
+    }
+  }
+}
+
+// Testimonials Section
+.testimonials-section {
+  padding: 100px 0;
+  background: #f8f9fa;
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+
+    .testimonial-card {
+      padding: 32px;
+      border-radius: 16px;
+      border: none;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: translateY(-4px);
+      }
+
+      .stars {
+        display: flex;
+        gap: 4px;
+        margin-bottom: 20px;
+
+        mat-icon {
+          color: #ffd54f;
+          font-size: 1.2rem;
+        }
+      }
+
+      .testimonial-text {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: #333;
+        margin-bottom: 20px;
+        font-style: italic;
+      }
+
+      .testimonial-author {
+        color: #667eea;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+// CTA Section
+.cta-section {
+  padding: 100px 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  text-align: center;
+
+  .cta-content {
+    .cta-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .cta-description {
+      font-size: 1.2rem;
+      margin-bottom: 40px;
+      opacity: 0.9;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-button {
+      padding: 16px 40px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      background: #ffd54f;
+      color: #333;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+
+      &:hover {
+        background: #ffcc02;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(255, 213, 79, 0.4);
+      }
+
+      mat-icon {
+        font-size: 1.4rem;
+      }
+    }
+  }
+}
+
+// Footer
+.landing-footer {
+  background: #2c3e50;
+  color: white;
+  padding: 60px 0 20px;
+
+  .footer-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 60px;
+    margin-bottom: 40px;
+
+    .footer-brand {
+      .brand-logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 16px;
+
+        mat-icon {
+          font-size: 2rem;
+          color: #ffd54f;
+        }
+
+        span {
+          font-size: 1.5rem;
+          font-weight: 600;
+        }
+      }
+
+      p {
+        color: #bdc3c7;
+        line-height: 1.6;
+      }
+    }
+
+    .footer-links {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+
+      .footer-column {
+        h4 {
+          font-size: 1.1rem;
+          font-weight: 600;
+          margin-bottom: 16px;
+          color: #ffd54f;
+        }
+
+        a {
+          display: block;
+          color: #bdc3c7;
+          text-decoration: none;
+          margin-bottom: 8px;
+          transition: color 0.3s ease;
+
+          &:hover {
+            color: white;
+          }
+        }
+      }
+    }
+  }
+
+  .footer-bottom {
+    border-top: 1px solid #34495e;
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #bdc3c7;
+
+    .footer-legal {
+      display: flex;
+      gap: 24px;
+
+      a {
+        color: #bdc3c7;
+        text-decoration: none;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: white;
+        }
+      }
+    }
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .landing-navbar {
+    .nav-buttons {
+      gap: 8px;
+
+      .nav-button {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+
+        mat-icon {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .hero-section {
+    padding: 60px 0;
+
+    .hero-content {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      text-align: center;
+    }
+
+    .hero-text {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+
+      .hero-actions {
+        justify-content: center;
+
+        .cta-button, .demo-button {
+          padding: 12px 24px;
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+
+  .section-header {
+    .section-title {
+      font-size: 2rem;
+    }
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .steps-container {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+
+    .footer-links {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+
+  .cta-section {
+    .cta-title {
+      font-size: 2rem;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    .hero-text {
+      .hero-title {
+        font-size: 2rem;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  }
+
+  .features-section,
+  .how-it-works-section,
+  .testimonials-section,
+  .cta-section {
+    padding: 60px 0;
+  }
+} 

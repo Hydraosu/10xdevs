@@ -1,0 +1,61 @@
+.update-preferences-container {
+  display: flex;
+  justify-content: center;
+  padding: 24px;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+
+  mat-card {
+    width: 100%;
+    max-width: 800px;
+    padding: 24px;
+
+    mat-card-header {
+      margin-bottom: 24px;
+      justify-content: center;
+    }
+
+    mat-card-title {
+      font-size: 24px;
+      font-weight: 500;
+    }
+
+    .loading-container {
+      display: flex;
+      justify-content: center;
+      padding: 48px;
+    }
+
+    .preferences-form {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .form-section {
+      h3 {
+        margin-bottom: 16px;
+        color: #333;
+        font-size: 18px;
+        font-weight: 500;
+      }
+    }
+
+    .macronutrient-inputs {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+
+    mat-form-field {
+      width: 100%;
+    }
+
+    .form-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 16px;
+      margin-top: 24px;
+    }
+  }
+} 

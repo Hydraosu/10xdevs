@@ -1,0 +1,81 @@
+<div class="login-container">
+  <div class="login-content">
+    <!-- Logo and Brand -->
+    <div class="brand-section">
+      <div class="brand-logo">
+        <mat-icon class="logo-icon">restaurant</mat-icon>
+        <span class="brand-name">HealthyMeal</span>
+      </div>
+      <p class="brand-subtitle">Zaloguj się do swojego konta</p>
+    </div>
+
+    <!-- Login Form -->
+    <mat-card class="login-card">
+      <mat-card-content>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Adres email</mat-label>
+            <input 
+              matInput 
+              formControlName="email" 
+              type="email" 
+              placeholder="Wprowadź swój email"
+              autocomplete="email"
+            >
+            <mat-icon matSuffix class="field-icon">email</mat-icon>
+            <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
+              Email jest wymagany
+            </mat-error>
+            <mat-error *ngIf="loginForm.get('email')?.hasError('email')">
+              Proszę wprowadzić prawidłowy email
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Hasło</mat-label>
+            <input 
+              matInput 
+              formControlName="password" 
+              type="password" 
+              placeholder="Wprowadź swoje hasło"
+              autocomplete="current-password"
+            >
+            <mat-icon matSuffix class="field-icon">lock</mat-icon>
+            <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+              Hasło jest wymagane
+            </mat-error>
+            <mat-error *ngIf="loginForm.get('password')?.hasError('minlength')">
+              Hasło musi mieć co najmniej 6 znaków
+            </mat-error>
+          </mat-form-field>
+
+          <button 
+            mat-raised-button 
+            type="submit" 
+            [disabled]="loginForm.invalid || isLoading"
+            class="login-button"
+          >
+            <mat-spinner diameter="20" *ngIf="isLoading" class="button-spinner"></mat-spinner>
+            <mat-icon *ngIf="!isLoading">login</mat-icon>
+            <span *ngIf="!isLoading">Zaloguj się</span>
+          </button>
+        </form>
+
+        <div class="form-footer">
+          <p class="signup-link">
+            Nie masz konta? 
+            <a routerLink="/signup" class="link">Zarejestruj się</a>
+          </p>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Back to Home -->
+    <div class="back-to-home">
+      <a routerLink="/" class="home-link">
+        <mat-icon>arrow_back</mat-icon>
+        Powrót do strony głównej
+      </a>
+    </div>
+  </div>
+</div> 

@@ -1,0 +1,85 @@
+<div class="update-preferences-container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Aktualizuj Preferencje</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div *ngIf="isLoading" class="loading-container">
+        <mat-spinner></mat-spinner>
+      </div>
+
+      <form *ngIf="!isLoading" [formGroup]="preferencesForm" (ngSubmit)="onSubmit()" class="preferences-form">
+        <div class="form-section">
+          <h3>Dzienne Cele</h3>
+          <mat-form-field appearance="outline">
+            <mat-label>Dzienne Kalorie</mat-label>
+            <input matInput type="number" formControlName="daily_calories" placeholder="Wprowadź dzienne kalorie">
+            <mat-error *ngIf="preferencesForm.get('daily_calories')?.hasError('min')">
+              Dzienne kalorie muszą być liczbą dodatnią
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="form-section">
+          <h3>Rozkład Makroskładników</h3>
+          <div class="macronutrient-inputs">
+            <mat-form-field appearance="outline">
+              <mat-label>Białko (%)</mat-label>
+              <input matInput type="number" formControlName="protein_percentage" placeholder="0-100">
+              <mat-error *ngIf="preferencesForm.get('protein_percentage')?.hasError('min')">
+                Procent białka musi wynosić co najmniej 0
+              </mat-error>
+              <mat-error *ngIf="preferencesForm.get('protein_percentage')?.hasError('max')">
+                Procent białka musi wynosić co najwyżej 100
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Węglowodany (%)</mat-label>
+              <input matInput type="number" formControlName="carbs_percentage" placeholder="0-100">
+              <mat-error *ngIf="preferencesForm.get('carbs_percentage')?.hasError('min')">
+                Procent węglowodanów musi wynosić co najmniej 0
+              </mat-error>
+              <mat-error *ngIf="preferencesForm.get('carbs_percentage')?.hasError('max')">
+                Procent węglowodanów musi wynosić co najwyżej 100
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Tłuszcze (%)</mat-label>
+              <input matInput type="number" formControlName="fat_percentage" placeholder="0-100">
+              <mat-error *ngIf="preferencesForm.get('fat_percentage')?.hasError('min')">
+                Procent tłuszczów musi wynosić co najmniej 0
+              </mat-error>
+              <mat-error *ngIf="preferencesForm.get('fat_percentage')?.hasError('max')">
+                Procent tłuszczów musi wynosić co najwyżej 100
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3>System Miar</h3>
+          <mat-form-field appearance="outline">
+            <mat-label>System</mat-label>
+            <mat-select formControlName="measurement_system">
+              <mat-option value="metric">Metryczny</mat-option>
+              <mat-option value="imperial">Imperialny</mat-option>
+            </mat-select>
+            <mat-error *ngIf="preferencesForm.get('measurement_system')?.hasError('pattern')">
+              Proszę wybrać prawidłowy system miar
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="form-actions">
+          <button mat-button type="button" routerLink="/app/preferences">Anuluj</button>
+          <button mat-raised-button color="primary" type="submit" [disabled]="preferencesForm.invalid || isLoading">
+            Zapisz Zmiany
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div> 

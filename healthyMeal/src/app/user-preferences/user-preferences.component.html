@@ -1,0 +1,59 @@
+<div class="preferences-container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Moje Preferencje</mat-card-title>
+      <div class="header-actions">
+        <button mat-raised-button color="primary" routerLink="/app/preferences/edit">
+          <mat-icon>edit</mat-icon>
+          Edytuj Preferencje
+        </button>
+      </div>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div *ngIf="isLoading" class="loading-container">
+        <mat-spinner></mat-spinner>
+      </div>
+
+      <div *ngIf="!isLoading && preferences" class="preferences-content">
+        <div class="preference-section">
+          <h3>Dzienne Cele</h3>
+          <div class="preference-item">
+            <span class="label">Dzienne Kalorie:</span>
+            <span class="value">{{ preferences.daily_calories || 'Nie ustawiono' }}</span>
+          </div>
+        </div>
+
+        <div class="preference-section">
+          <h3>Rozkład Makroskładników</h3>
+          <div class="preference-item">
+            <span class="label">Białko:</span>
+            <span class="value">{{ preferences.protein_percentage || 0 }}%</span>
+          </div>
+          <div class="preference-item">
+            <span class="label">Węglowodany:</span>
+            <span class="value">{{ preferences.carbs_percentage || 0 }}%</span>
+          </div>
+          <div class="preference-item">
+            <span class="label">Tłuszcze:</span>
+            <span class="value">{{ preferences.fat_percentage || 0 }}%</span>
+          </div>
+        </div>
+
+        <div class="preference-section">
+          <h3>Alergeny</h3>
+          <div class="preference-item">
+            <span class="value">{{ getFormattedAllergens() }}</span>
+          </div>
+        </div>
+
+        <div class="preference-section">
+          <h3>System Miar</h3>
+          <div class="preference-item">
+            <span class="value">{{ getMeasurementSystemText() }}</span>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div> 
