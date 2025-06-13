@@ -56,13 +56,13 @@ export class OpenRouterService {
     });
 
     const prompt = this.buildPrompt(request);
-    
+
     const body = {
       model: this.MODEL,
       messages: [
         {
           role: 'system',
-          content: 'You are a professional chef. Generate a recipe in JSON format only. No explanations or thinking process. Just the JSON object.'
+          content: 'Jesteś profesjonalnym szefem kuchni. Wygeneruj przepis w formacie JSON tylko. Bez wyjaśnień ani procesu myślowego. Tylko obiekt JSON.'
         },
         {
           role: 'user',
@@ -128,7 +128,7 @@ export class OpenRouterService {
   private parseRecipeResponse(response: any): RecipeGenerationResponse {
     try {
       console.log('Raw response:', response);
-      
+
       if (!response.choices?.[0]?.message?.content) {
         console.error('Invalid response structure:', response);
         throw new Error('Invalid response format from OpenRouter');
@@ -170,4 +170,4 @@ export class OpenRouterService {
       throw new Error('Failed to parse recipe response');
     }
   }
-} 
+}
